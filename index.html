@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DressFresh — Multimarca de moda y estilo</title>
+<meta name="description" content="DressFresh: ropa, calzado, perfumes y accesorios multimarca. Est. 2024.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============ TOPBAR ============ -->
+<div class="topbar">
+  <div class="wrap">
+    <span>Envíos a toda Colombia · Cambios gratis en 30 días</span>
+    <div class="topbar-socials">
+      <a href="https://instagram.com/dressfresh" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+      </a>
+      <a href="https://facebook.com/dressfresh" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 9h3V6h-3c-2 0-3.5 1.5-3.5 3.5V11H8v3h2.5v6H14v-6h2.7l.5-3H14V9.6c0-.4.2-.6.6-.6Z"/></svg>
+      </a>
+      <a href="https://tiktok.com/@dressfresh" target="_blank" rel="noopener" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M16 4c.6 2.2 2 3.6 4 4v3c-1.6 0-3-.4-4-1.3V15a5 5 0 1 1-5-5c.3 0 .7 0 1 .1v3.1a2 2 0 1 0 1.4 1.9V4Z"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="wrap nav">
+    <a href="#inicio" class="brand">
+      <div class="seal">
+        <div class="seal-inner">
+          <span class="est">Est. 2024</span>
+          <span class="df">DF</span>
+        </div>
+      </div>
+      <span class="brand-word">DRESS<span>FRESH</span></span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#inicio">Inicio</a>
+      <a href="#catalogo">Catálogo</a>
+      <a href="#promos">Promociones</a>
+      <a href="#ayuda">Ayuda &amp; PQRSF</a>
+      <a href="admin.html" class="admin-link">Panel admin</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn" id="btnAccount" aria-label="Cuenta">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20c1.5-4 4.2-6 7.5-6s6 2 7.5 6"/></svg>
+      </button>
+      <button class="icon-btn" id="btnCart" aria-label="Carrito de compras">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 4h2l1.6 11.2A2 2 0 0 0 8.6 17H18a2 2 0 0 0 2-1.6L21.5 8H6"/><circle cx="9" cy="21" r="1.3"/><circle cx="17" cy="21" r="1.3"/></svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="burger" id="btnBurger" aria-label="Menú">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="inicio">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="hero-eyebrow-row">
+          <span class="rule"></span>
+          <span class="eyebrow">Multimarca · Est. 2024</span>
+        </div>
+        <h1>Viste tu<br>propio <em>sello.</em></h1>
+        <p class="lead">Camisas, tenis, perfumes y accesorios de marcas que ya conoces, curados en un solo lugar. Sin vueltas, sin relleno — solo lo que se ve bien puesto.</p>
+        <div class="hero-cta">
+          <a href="#catalogo" class="btn btn-gold">Ver catálogo</a>
+          <a href="#promos" class="btn btn-ghost">Promociones activas</a>
+        </div>
+        <div class="hero-stats">
+          <div><b id="statProducts">0</b><span>Productos</span></div>
+          <div><b>10</b><span>Categorías</span></div>
+          <div><b>24/7</b><span>Soporte WhatsApp</span></div>
+        </div>
+      </div>
+      <div class="hero-seal-wrap">
+        <div class="seal spin" style="--size:320px;">
+          <div class="seal-inner">
+            <span class="est">Est. 2024</span>
+            <span class="df">DF</span>
+            <span class="tag">Dress Fresh</span>
+          </div>
+        </div>
+        <span class="hero-orbit-tag tag-1">Multimarca</span>
+        <span class="hero-orbit-tag tag-2">Envío nacional</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- marquee -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Camisas<span></span></span><span>Camisetas<span></span></span><span>Pantalones<span></span></span><span>Sudaderas<span></span></span><span>Shorts<span></span></span><span>Ropa interior<span></span></span><span>Tenis<span></span></span><span>Zapatos<span></span></span><span>Perfumes<span></span></span><span>Bolsos<span></span></span>
+      <span>Camisas<span></span></span><span>Camisetas<span></span></span><span>Pantalones<span></span></span><span>Sudaderas<span></span></span><span>Shorts<span></span></span><span>Ropa interior<span></span></span><span>Tenis<span></span></span><span>Zapatos<span></span></span><span>Perfumes<span></span></span><span>Bolsos<span></span></span>
+    </div>
+  </div>
+
+  <!-- ============ CATALOGO ============ -->
+  <section class="catalog wrap" id="catalogo">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Catálogo completo</span>
+        <h2 class="section-title">Explora la colección</h2>
+      </div>
+      <p class="section-sub">Filtra por categoría o busca por nombre. El inventario se actualiza en tiempo real desde el panel administrativo.</p>
+    </div>
+
+    <div class="search-row">
+      <input type="search" class="input" id="searchInput" placeholder="Buscar producto, ej. 'sudadera negra'…">
+      <select class="input" id="sortSelect" style="max-width:200px;">
+        <option value="default">Ordenar: destacados</option>
+        <option value="price-asc">Precio: menor a mayor</option>
+        <option value="price-desc">Precio: mayor a menor</option>
+        <option value="name">Nombre A–Z</option>
+      </select>
+    </div>
+
+    <div class="filters" id="filters">
+      <button class="chip active" data-cat="all">Todo</button>
+      <button class="chip" data-cat="camisas">Camisas</button>
+      <button class="chip" data-cat="camisetas">Camisetas</button>
+      <button class="chip" data-cat="pantalones">Pantalones</button>
+      <button class="chip" data-cat="sudaderas">Sudaderas</button>
+      <button class="chip" data-cat="shorts">Shorts</button>
+      <button class="chip" data-cat="ropa-interior">Ropa interior</button>
+      <button class="chip" data-cat="tenis">Tenis</button>
+      <button class="chip" data-cat="zapatos">Zapatos</button>
+      <button class="chip" data-cat="perfumes">Perfumes</button>
+      <button class="chip" data-cat="bolsos">Bolsos</button>
+    </div>
+
+    <div class="grid-products" id="productsGrid">
+      <!-- inyectado por script.js -->
+    </div>
+  </section>
+
+  <!-- ============ PROMOCIONES ============ -->
+  <section class="promos" id="promos">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Por tiempo limitado</span>
+          <h2 class="section-title">Promociones</h2>
+        </div>
+        <p class="section-sub">Códigos activos aplicables en el carrito de compras. Un cupón por pedido.</p>
+      </div>
+      <div class="promo-grid">
+        <div class="promo-card">
+          <div class="promo-pct">20%</div>
+          <div class="promo-title">Segunda prenda con descuento</div>
+          <p class="promo-desc">Aplica en camisetas, camisas y sudaderas seleccionadas.</p>
+          <div class="promo-code"><span>Código</span><b>FRESH20</b></div>
+        </div>
+        <div class="promo-card">
+          <div class="promo-pct">15%</div>
+          <div class="promo-title">Calzado de temporada</div>
+          <p class="promo-desc">Tenis y zapatos seleccionados con envío gratis incluido.</p>
+          <div class="promo-code"><span>Código</span><b>STEPFRESH</b></div>
+        </div>
+        <div class="promo-card">
+          <div class="promo-pct">10%</div>
+          <div class="promo-title">Primera compra</div>
+          <p class="promo-desc">Válido para nuevos usuarios registrados en el sitio.</p>
+          <div class="promo-code"><span>Código</span><b>BIENVENIDO</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AYUDA + PQRSF ============ -->
+  <section class="help-section wrap" id="ayuda">
+    <div class="help-grid">
+      <div class="help-col">
+        <span class="eyebrow">Estamos para ayudarte</span>
+        <h3>Canales de contacto</h3>
+        <p class="desc">Elige el canal que prefieras. Nuestro equipo responde en horario de lunes a sábado, 8am–7pm.</p>
+        <div class="contact-options">
+          <a class="contact-opt" href="https://wa.me/573000000000?text=Hola%20DressFresh%2C%20necesito%20ayuda" target="_blank" rel="noopener">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20l1.4-4A8 8 0 1 1 9 19l-5 1Z"/><path d="M9 10c0 3 2 5 5 5"/></svg></span>
+            <span><strong>WhatsApp</strong><span>Respuesta inmediata · +57 300 000 0000</span></span>
+          </a>
+          <a class="contact-opt" href="mailto:hola@dressfresh.co">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+            <span><strong>Correo electrónico</strong><span>hola@dressfresh.co</span></span>
+          </a>
+          <a class="contact-opt" href="#" id="openPqrsfInfo">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v12H8l-4 4Z"/></svg></span>
+            <span><strong>Buzón PQRSF</strong><span>Peticiones, quejas, reclamos, sugerencias y felicitaciones</span></span>
+          </a>
+        </div>
+      </div>
+
+      <div class="help-col">
+        <span class="eyebrow">Buzón PQRSF</span>
+        <h3>Escríbenos</h3>
+        <p class="desc">Toda solicitud recibe número de radicado y respuesta en máximo 15 días hábiles.</p>
+        <form class="form-stack" id="pqrsfForm">
+          <div class="form-row-2">
+            <div class="field">
+              <label for="pqNombre">Nombre completo</label>
+              <input class="input" id="pqNombre" required placeholder="Tu nombre">
+            </div>
+            <div class="field">
+              <label for="pqEmail">Correo</label>
+              <input class="input" type="email" id="pqEmail" required placeholder="tucorreo@ejemplo.com">
+            </div>
+          </div>
+          <div class="field">
+            <label for="pqTipo">Tipo de solicitud</label>
+            <select class="input" id="pqTipo" required>
+              <option value="">Selecciona una opción</option>
+              <option>Petición</option>
+              <option>Queja</option>
+              <option>Reclamo</option>
+              <option>Sugerencia</option>
+              <option>Felicitación</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="pqMensaje">Mensaje</label>
+            <textarea class="input" id="pqMensaje" required placeholder="Cuéntanos qué sucedió o qué necesitas…"></textarea>
+          </div>
+          <button class="btn btn-gold btn-block" type="submit">Enviar solicitud</button>
+          <p class="form-note">Tus datos se usan únicamente para dar trámite a tu solicitud, conforme a la política de tratamiento de datos.</p>
+          <div class="form-success" id="pqrsfSuccess"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand">
+          <div class="seal" style="--size:40px;">
+            <div class="seal-inner"><span class="df" style="font-size:14px;">DF</span></div>
+          </div>
+          <span class="brand-word" style="font-size:18px;">DRESS<span>FRESH</span></span>
+        </div>
+        <p>Marca multimarca de ropa, calzado, perfumes y accesorios. Curaduría honesta desde 2024.</p>
+        <div class="footer-socials">
+          <a href="https://instagram.com/dressfresh" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg></a>
+          <a href="https://facebook.com/dressfresh" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 9h3V6h-3c-2 0-3.5 1.5-3.5 3.5V11H8v3h2.5v6H14v-6h2.7l.5-3H14V9.6c0-.4.2-.6.6-.6Z"/></svg></a>
+          <a href="https://tiktok.com/@dressfresh" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M16 4c.6 2.2 2 3.6 4 4v3c-1.6 0-3-.4-4-1.3V15a5 5 0 1 1-5-5c.3 0 .7 0 1 .1v3.1a2 2 0 1 0 1.4 1.9V4Z"/></svg></a>
+          <a href="https://wa.me/573000000000" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20l1.4-4A8 8 0 1 1 9 19l-5 1Z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Tienda</h4>
+        <ul>
+          <li><a href="#catalogo">Catálogo</a></li>
+          <li><a href="#promos">Promociones</a></li>
+          <li><a href="#" id="footerCartLink">Carrito</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Soporte</h4>
+        <ul>
+          <li><a href="#ayuda">PQRSF</a></li>
+          <li><a href="https://wa.me/573000000000" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="mailto:hola@dressfresh.co">Correo</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Cuenta</h4>
+        <ul>
+          <li><a href="#" id="footerLoginLink">Iniciar sesión</a></li>
+          <li><a href="admin.html">Panel administrativo</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024–2026 DressFresh. Todos los derechos reservados.</span>
+      <span><a href="#">Términos</a> · <a href="#">Privacidad</a> · <a href="#">PQRSF</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ FAB WHATSAPP ============ -->
+<a class="fab-whatsapp" href="https://wa.me/573000000000?text=Hola%20DressFresh%2C%20tengo%20una%20pregunta" target="_blank" rel="noopener" aria-label="Ayuda vía WhatsApp">
+  <span class="fab-tooltip">¿Necesitas ayuda?</span>
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.4c1.4.8 3 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 20.2 12c0 4.5-3.7 8.2-8.2 8.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8.9-.1.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.4.1-.5.1-.1.2-.3.4-.4.1-.1.2-.3.2-.4.1-.2 0-.3 0-.4 0-.1-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3 4.7 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2 0-.2-.2-.2-.4-.3Z"/></svg>
+</a>
+
+<!-- ============ TOAST ============ -->
+<div class="toast" id="toast"></div>
+
+<!-- ============ AUTH MODAL ============ -->
+<div class="overlay" id="authOverlay">
+  <div class="modal">
+    <button class="modal-close" data-close="authOverlay" aria-label="Cerrar">✕</button>
+    <div class="modal-head">
+      <span class="eyebrow">Tu cuenta</span>
+      <h3 id="authTitle">Bienvenido de nuevo</h3>
+    </div>
+    <div class="modal-tabs">
+      <button class="modal-tab active" data-tab="login">Ingresar</button>
+      <button class="modal-tab" data-tab="register">Crear cuenta</button>
+    </div>
+
+    <div class="modal-pane active" id="paneLogin">
+      <form id="loginForm">
+        <div class="field">
+          <label for="loginEmail">Correo</label>
+          <input class="input" type="email" id="loginEmail" required placeholder="tucorreo@ejemplo.com">
+        </div>
+        <div class="field">
+          <label for="loginPass">Contraseña</label>
+          <input class="input" type="password" id="loginPass" required placeholder="••••••••">
+        </div>
+        <button class="btn btn-gold btn-block" type="submit">Iniciar sesión</button>
+        <div class="form-msg" id="loginMsg"></div>
+      </form>
+      <p class="form-foot-link">Cuenta demo: <b>demo@dressfresh.co</b> / <b>demo1234</b></p>
+    </div>
+
+    <div class="modal-pane" id="paneRegister">
+      <form id="registerForm">
+        <div class="field">
+          <label for="regName">Nombre</label>
+          <input class="input" id="regName" required placeholder="Tu nombre">
+        </div>
+        <div class="field">
+          <label for="regEmail">Correo</label>
+          <input class="input" type="email" id="regEmail" required placeholder="tucorreo@ejemplo.com">
+        </div>
+        <div class="field">
+          <label for="regPass">Contraseña</label>
+          <input class="input" type="password" id="regPass" required placeholder="Mínimo 6 caracteres">
+        </div>
+        <button class="btn btn-gold btn-block" type="submit">Crear cuenta</button>
+        <div class="form-msg" id="registerMsg"></div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CART DRAWER ============ -->
+<div class="drawer-layer" id="cartDrawer">
+  <div class="drawer-backdrop" data-close-drawer></div>
+  <div class="drawer">
+    <div class="drawer-head">
+      <h3>Tu carrito</h3>
+      <button class="modal-close" data-close-drawer aria-label="Cerrar carrito">✕</button>
+    </div>
+    <div class="drawer-body" id="cartBody">
+      <!-- inyectado -->
+    </div>
+    <div class="drawer-foot">
+      <div class="cart-summary-row"><span>Subtotal</span><span id="cartSubtotal">$0</span></div>
+      <div class="cart-summary-row"><span>Envío</span><span id="cartShipping">A calcular</span></div>
+      <div class="cart-total-row"><span>Total</span><span id="cartTotal">$0</span></div>
+      <button class="btn btn-gold btn-block" id="btnCheckout">Pagar en línea</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CHECKOUT / PAGO MODAL ============ -->
+<div class="overlay" id="checkoutOverlay">
+  <div class="modal">
+    <button class="modal-close" data-close="checkoutOverlay" aria-label="Cerrar">✕</button>
+    <div class="modal-head">
+      <span class="eyebrow">Pago en línea</span>
+      <h3>Finalizar compra</h3>
+    </div>
+    <div class="checkout-summary" id="checkoutSummary"></div>
+    <div class="pay-methods">
+      <button class="pay-method active" data-method="Tarjeta">Tarjeta</button>
+      <button class="pay-method" data-method="PSE">PSE</button>
+      <button class="pay-method" data-method="Nequi/Daviplata">Nequi</button>
+    </div>
+    <form id="checkoutForm" class="form-stack">
+      <div class="field" id="cardFields">
+        <label for="ccNumber">Número de tarjeta</label>
+        <input class="input" id="ccNumber" placeholder="0000 0000 0000 0000" maxlength="19">
+        <div class="form-row-2" style="margin-top:12px;">
+          <input class="input" id="ccExp" placeholder="MM/AA" maxlength="5">
+          <input class="input" id="ccCvv" placeholder="CVV" maxlength="4">
+        </div>
+      </div>
+      <div class="field">
+        <label for="ccName">Nombre del titular / cuenta</label>
+        <input class="input" id="ccName" required placeholder="Como aparece en el medio de pago">
+      </div>
+      <button class="btn btn-gold btn-block" type="submit">Confirmar pago</button>
+      <p class="form-note">Simulación de pago con fines de demostración. No se procesan transacciones reales.</p>
+      <div class="form-msg" id="checkoutMsg"></div>
+    </form>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

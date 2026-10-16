@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DressFresh — Panel administrativo</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  body{ background: var(--bg); }
+  .admin-shell{ display:none; min-height:100vh; }
+  .admin-shell.show{ display:flex; }
+  .admin-sidebar{
+    width: 240px; flex-shrink:0; background: var(--bg-alt);
+    border-right:1px solid var(--line-soft); padding: 28px 20px;
+    display:flex; flex-direction:column; gap: 30px;
+    position:sticky; top:0; height:100vh;
+  }
+  .admin-brand{ display:flex; align-items:center; gap:10px; }
+  .admin-brand .seal{ --size:36px; }
+  .admin-brand span{ font-family:var(--display); font-size:18px; letter-spacing:.03em; }
+  .admin-nav{ display:flex; flex-direction:column; gap:6px; }
+  .admin-nav a{
+    font-family: var(--mono); font-size:12px; letter-spacing:.06em; text-transform:uppercase;
+    color: var(--muted); padding: 11px 12px; border-radius: var(--radius);
+    display:flex; align-items:center; gap:10px;
+  }
+  .admin-nav a.active, .admin-nav a:hover{ background: var(--surface-2); color: var(--white); }
+  .admin-main{ flex:1; padding: 34px 40px; overflow-y:auto; }
+  .admin-topline{ display:flex; justify-content:space-between; align-items:center; margin-bottom: 30px; flex-wrap:wrap; gap:14px; }
+  .admin-topline h2{ font-size: 30px; text-transform:uppercase; }
+  .stat-row{ display:grid; grid-template-columns: repeat(4,1fr); gap:16px; margin-bottom: 34px; }
+  .stat-card{ background: var(--surface); border:1px solid var(--line-soft); border-radius: var(--radius); padding:18px; }
+  .stat-card b{ display:block; font-family: var(--display); font-size:30px; }
+  .stat-card span{ font-family: var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+  .admin-panel{ background: var(--surface); border:1px solid var(--line-soft); border-radius: var(--radius); padding: 24px; margin-bottom:28px; }
+  .admin-panel h3{ font-size:20px; text-transform:uppercase; margin-bottom:16px; }
+  table{ width:100%; border-collapse: collapse; font-size:13px; }
+  th{ text-align:left; font-family:var(--mono); font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); padding: 10px 8px; border-bottom:1px solid var(--line); }
+  td{ padding: 12px 8px; border-bottom:1px solid var(--line-soft); vertical-align:middle; }
+  tr:last-child td{ border-bottom:none; }
+  .stock-pill{ font-family:var(--mono); font-size:11px; padding:3px 9px; border-radius:999px; border:1px solid var(--line); }
+  .stock-pill.low{ color:#d98b3f; border-color:#6b4b23; }
+  .stock-pill.out{ color:var(--red); border-color:#5a2a1f; }
+  .stock-pill.ok{ color:var(--gold); border-color: var(--gold-soft); }
+  .row-actions{ display:flex; gap:8px; }
+  .row-actions button{
+    border:1px solid var(--line); background:transparent; color:var(--white);
+    padding: 6px 10px; border-radius: var(--radius); font-family:var(--mono); font-size:10px; letter-spacing:.05em; text-transform:uppercase;
+  }
+  .row-actions button:hover{ border-color: var(--gold); color:var(--gold); }
+  .row-actions button.danger:hover{ border-color:var(--red); color:var(--red); }
+  .login-shell{
+    min-height:100vh; display:flex; align-items:center; justify-content:center; padding: 20px;
+  }
+  .login-box{
+    width:100%; max-width: 380px; background: var(--bg-alt); border:1px solid var(--line);
+    border-radius: var(--radius); padding: 40px 32px; text-align:center;
+  }
+  .login-box .seal{ --size:70px; margin: 0 auto 20px; }
+  .login-box h2{ font-size:26px; text-transform:uppercase; margin-bottom:6px; }
+  .login-box p{ color:var(--muted); font-size:13px; margin-bottom: 26px; }
+  .form-hint{ font-size:11px; color: var(--muted-2); margin-top:16px; font-family: var(--mono); }
+  .pqrsf-list{ display:flex; flex-direction:column; gap:10px; max-height:320px; overflow-y:auto; }
+  .pqrsf-item{ border:1px solid var(--line-soft); border-radius: var(--radius); padding:12px 14px; font-size:13px; }
+  .pqrsf-item .meta{ font-family:var(--mono); font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; margin-bottom:4px; }
+  .modal-wide{ max-width: 520px; }
+</style>
+</head>
+<body>
+
+<!-- ============ LOGIN GATE ============ -->
+<div class="login-shell" id="loginShell">
+  <div class="login-box">
+    <div class="seal">
+      <div class="seal-inner"><span class="est">Est. 2024</span><span class="df">DF</span></div>
+    </div>
+    <h2>Panel administrativo</h2>
+    <p>Acceso privado. Ingresa tus credenciales para gestionar el catálogo de DressFresh.</p>
+    <form id="adminLoginForm" class="form-stack">
+      <div class="field">
+        <label for="adminUser">Usuario</label>
+        <input class="input" id="adminUser" required placeholder="admin@dressfresh.co">
+      </div>
+      <div class="field">
+        <label for="adminPass">Contraseña</label>
+        <input class="input" type="password" id="adminPass" required placeholder="••••••••">
+      </div>
+      <button class="btn btn-gold btn-block" type="submit">Ingresar</button>
+      <div class="form-msg" id="adminLoginMsg"></div>
+    </form>
+    <p class="form-hint">Demo: admin@dressfresh.co / admin123</p>
+    <p class="form-hint"><a href="index.html">← Volver al sitio</a></p>
+  </div>
+</div>
+
+<!-- ============ ADMIN SHELL ============ -->
+<div class="admin-shell" id="adminShell">
+  <aside class="admin-sidebar">
+    <div class="admin-brand">
+      <div class="seal"><div class="seal-inner"><span class="df" style="font-size:12px;">DF</span></div></div>
+      <span>DRESSFRESH<br><small style="font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.1em;">ADMIN</small></span>
+    </div>
+    <nav class="admin-nav">
+      <a href="#" class="active" data-panel="panelProducts">Productos</a>
+      <a href="#" data-panel="panelPqrsf">Buzón PQRSF</a>
+      <a href="#" data-panel="panelUsers">Usuarios registrados</a>
+      <a href="index.html">Ver sitio público</a>
+      <a href="#" id="adminLogout">Cerrar sesión</a>
+    </nav>
+  </aside>
+
+  <main class="admin-main">
+    <div class="admin-topline">
+      <h2>Gestión de productos</h2>
+      <button class="btn btn-gold" id="btnNewProduct">+ Nuevo producto</button>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-card"><b id="stTotal">0</b><span>Productos totales</span></div>
+      <div class="stat-card"><b id="stOut">0</b><span>Agotados</span></div>
+      <div class="stat-card"><b id="stPromo">0</b><span>En promoción</span></div>
+      <div class="stat-card"><b id="stValue">$0</b><span>Valor de inventario</span></div>
+    </div>
+
+    <section class="admin-panel" id="panelProducts">
+      <h3>Catálogo</h3>
+      <div style="overflow-x:auto;">
+        <table>
+          <thead>
+            <tr><th>Producto</th><th>Categoría</th><th>Precio</th><th>Stock</th><th>Promo</th><th>Acciones</th></tr>
+          </thead>
+          <tbody id="productsTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="admin-panel" id="panelPqrsf" style="display:none;">
+      <h3>Solicitudes PQRSF recibidas</h3>
+      <div class="pqrsf-list" id="pqrsfList"></div>
+    </section>
+
+    <section class="admin-panel" id="panelUsers" style="display:none;">
+      <h3>Usuarios registrados</h3>
+      <div style="overflow-x:auto;">
+        <table>
+          <thead><tr><th>Nombre</th><th>Correo</th><th>Registrado</th></tr></thead>
+          <tbody id="usersTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- ============ PRODUCT FORM MODAL ============ -->
+<div class="overlay" id="productOverlay">
+  <div class="modal modal-wide">
+    <button class="modal-close" data-close="productOverlay" aria-label="Cerrar">✕</button>
+    <div class="modal-head">
+      <span class="eyebrow" id="productModalEyebrow">Nuevo producto</span>
+      <h3 id="productModalTitle">Agregar producto</h3>
+    </div>
+    <form id="productForm" class="form-stack">
+      <input type="hidden" id="prodId">
+      <div class="field">
+        <label for="prodName">Nombre del producto</label>
+        <input class="input" id="prodName" required placeholder="Ej. Camisa Oxford Clásica">
+      </div>
+      <div class="form-row-2">
+        <div class="field">
+          <label for="prodCat">Categoría</label>
+          <select class="input" id="prodCat" required>
+            <option value="camisas">Camisas</option>
+            <option value="camisetas">Camisetas</option>
+            <option value="pantalones">Pantalones</option>
+            <option value="sudaderas">Sudaderas</option>
+            <option value="shorts">Shorts</option>
+            <option value="ropa-interior">Ropa interior</option>
+            <option value="tenis">Tenis</option>
+            <option value="zapatos">Zapatos</option>
+            <option value="perfumes">Perfumes</option>
+            <option value="bolsos">Bolsos</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="prodStock">Stock disponible</label>
+          <input class="input" type="number" min="0" id="prodStock" required placeholder="0">
+        </div>
+      </div>
+      <div class="form-row-2">
+        <div class="field">
+          <label for="prodPrice">Precio (COP)</label>
+          <input class="input" type="number" min="0" id="prodPrice" required placeholder="0">
+        </div>
+        <div class="field">
+          <label for="prodOldPrice">Precio anterior (opcional)</label>
+          <input class="input" type="number" min="0" id="prodOldPrice" placeholder="0">
+        </div>
+      </div>
+      <div class="field" style="display:flex; align-items:center; gap:10px;">
+        <input type="checkbox" id="prodPromo" style="width:16px;height:16px;">
+        <label for="prodPromo" style="margin:0;">Marcar como producto en promoción</label>
+      </div>
+      <button class="btn btn-gold btn-block" type="submit" id="prodSubmitBtn">Guardar producto</button>
+      <div class="form-msg" id="productMsg"></div>
+    </form>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="admin.js"></script>
+</body>
+</html>
